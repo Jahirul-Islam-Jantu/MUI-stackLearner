@@ -11,6 +11,6 @@
 
         - make the UI
 
-        - add the functionalities
+f        - add the functionalities
         
 
