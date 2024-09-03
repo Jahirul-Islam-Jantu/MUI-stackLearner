@@ -3,7 +3,7 @@ import getPlayList from "./api/index.js";
 
 const App = () => {
     useEffect(()=>{
-        getPlayList('PL_XxuZqN0xVASsjyqiNzgjUWHbDkN2Scy').then(
+        getPlayList('PLe28tn1x4EIZE0Rp8xakXrvPY7m63_6Oc').then(
             (res)=>{
                 console.log(res)
             }
