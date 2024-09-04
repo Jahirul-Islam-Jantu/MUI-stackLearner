@@ -8,13 +8,39 @@ const UsePlayList = () => {
         recentPlayLists:[],
         favourites: [],
     })
-    const getPlayListById =async (playListId) => {
-        const result = await getPlayList(playListId)
+    const getPlayListById =async (playListId, force=false) => {
+        if(state.playLists[playListId]){
+            return
+        }
+        let result = await getPlayList(playListId)
+
+        let cid, ct
+
+        result = result.map(item =>{
+            const {channelId, title, description, thumbnails: {medium}, channelTitle,} = item.snippet
+            if (!cid){
+                cid = channelId
+            }
+            if (!ct){
+                ct = channelTitle
+            }
+            return {
+                title,
+                description,
+                thumbnail: medium,
+                contentDetails: item.contentDetails,
+            }
+        })
         setState(prev =>({
             ...prev,
             playList: {
                 ...prev.playLists,
-                [playListId]: result
+                [playListId]: {
+                    items: result,
+                    playListId: playListId,
+                    channelId: cid,
+                    channelTitle: ct,
+                }
             }
         })
         )
