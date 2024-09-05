@@ -1,4 +1,4 @@
-import {useState} from "react";
+cd testimport {useState} from "react";
 import getPlayList from "../api/index.js";
 
 
@@ -9,7 +9,7 @@ const UsePlayList = () => {
         favourites: [],
     })
     const getPlayListById =async (playListId, force=false) => {
-        if(state.playLists[playListId]){
+        if(state.playLists[playListId] && !force){
             return
         }
         let result = await getPlayList(playListId)
