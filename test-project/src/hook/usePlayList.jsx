@@ -1,4 +1,4 @@
-cd testimport {useState} from "react";
+ import {useState} from "react";
 import getPlayList from "../api/index.js";
 
 
@@ -37,7 +37,7 @@ const UsePlayList = () => {
                 ...prev.playLists,
                 [playListId]: {
                     items: result,
-                    playListId: playListId,
+                    playListId,
                     channelId: cid,
                     channelTitle: ct,
                 }
